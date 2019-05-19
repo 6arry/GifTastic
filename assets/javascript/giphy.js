@@ -30,6 +30,9 @@ function buttonMaker(searchArray, classToAdd, areaToAddTo){
 // Search: "q=goku"
 // Amount of search results =  "&limit=5"
 
+// THIS IS ALL ABOUT ON-CLICK, AJAX CALL, AND WHERE EVERYTHING GOES AFTER YOU CLICK A BUTTON
+// =========================================================================================
+
 $(document).on("click", ".searchButton", function(){
     var type = $(this).data("type");
     var queryURL = "http://api.giphy.com/v1/gifs/search?api_key=UNUrXOwdD5LUj9OXrpezgJTnU1ytlcTJ&limit=5&q=" + type;
@@ -53,6 +56,9 @@ $(document).on("click", ".searchButton", function(){
     })
     // console.log(type);
 })
+
+// THIS MAKES THE GIF START AND STOP MOVING
+// ==========================================================
 
 $(document).on("click", ".searchImage", function(){
     var state = $(this).attr("data-state");
