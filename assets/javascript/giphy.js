@@ -65,9 +65,12 @@ $(document).on("click", ".searchImage", function(){
     }
 })
 
-$("#addSearch").on("click", function(){
+// THIS ADDS MORE BUTTONS
+// ==========================================================
+
+$("#add-search").on("click", function(){
     var newSearch = $("input").eq(0).val();
     searchArray.push(newSearch);
-    buttonMaker(searchArray, "searchButton", "#search-buttons");
+    buttonMaker(searchArray, "searchButton", "#search-buttons btn btn-outline-info");
     return false;
 })
