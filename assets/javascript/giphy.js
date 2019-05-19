@@ -1,11 +1,17 @@
+// BUTTONS THAT PRE-LOAD ON PAGE RENDER
+// ==================================================================
+
 $(function(){
-    populateButtons(searchArray, "searchButton", "#buttonsArea");
+    buttonMaker(searchArray, "searchButton", "#search-buttons");
     // console.log("Page Loaded");
 })
 
-var searchArray = ["Dog", "Cat", "Bird"];
+var searchArray = ["Goku", "Vegeta", "Gohan"];
 
-function populateButtons(searchArray, classToAdd, areaToAddTo){
+// BUTTON MAKER FUNCTION
+// ==================================================================
+
+function buttonMaker(searchArray, classToAdd, areaToAddTo){
     $(areaToAddTo).empty();
     for (var i=0; i<searchArray.length;i++){
         var a = $("<button>");
@@ -16,9 +22,17 @@ function populateButtons(searchArray, classToAdd, areaToAddTo){
     }
 }
 
+// GiPHY APi KEY = UNUrXOwdD5LUj9OXrpezgJTnU1ytlcTJ
+
+// GiPHY EXAMPLE: http://api.giphy.com/v1/gifs/search?api_key=UNUrXOwdD5LUj9OXrpezgJTnU1ytlcTJ&limit=10
+
+// Parameters for the API
+// Search: "q=goku"
+// Amount of search results =  "&limit=5"
+
 $(document).on("click", ".searchButton", function(){
     var type = $(this).data("type");
-    var queryURL = "http://api.giphy.com/v1/gifs/search?api_key=UNUrXOwdD5LUj9OXrpezgJTnU1ytlcTJ&limit=10&q=" + type;
+    var queryURL = "http://api.giphy.com/v1/gifs/search?api_key=UNUrXOwdD5LUj9OXrpezgJTnU1ytlcTJ&limit=5&q=" + type;
     $.ajax({url: queryURL, method: "GET"}).done(function(response){
         for (var i=0; i<response.data.length;i++){
             var searchDiv = $("<div class='search-item'>");
@@ -34,31 +48,26 @@ $(document).on("click", ".searchButton", function(){
             image.addClass("searchImage");
             searchDiv.append(p);
             searchDiv.append(image);
-            $("#searchs").append(searchDiv);
+            $("#searches").append(searchDiv);
         }
     })
     // console.log(type);
 })
 
+$(document).on("click", ".searchImage", function(){
+    var state = $(this).attr("data-state");
+    if (state == "still"){
+        $(this).attr("src", $(this).data("animated"));
+        $(this).attr("data-state", "animated");
+    } else {
+        $(this).attr("src", $(this).data("still"));
+        $(this).attr("data-state", "still");
+    }
+})
 
-
-
-
-// GiPHY APi KEY = UNUrXOwdD5LUj9OXrpezgJTnU1ytlcTJ
-
-// GiPHY EXAMPLE: http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=UNUrXOwdD5LUj9OXrpezgJTnU1ytlcTJ&limit=10
-
-// ON CLICK FUNCTIONS ============================================ //
-// $('button').on('click', function(){
-//     var x = $(this).data('search');
-//     console.log(x)
-
-//     var queryURL = "http://api.giphy.com/v1/gifs/search?q=goku&api_key=UNUrXOwdD5LUj9OXrpezgJTnU1ytlcTJ&limit=10"
-// })
-
-// ON CLICK FUNCTIONS ============================================ //
-// ON CLICK FUNCTIONS ============================================ //
-// ON CLICK FUNCTIONS ============================================ //
-// ON CLICK FUNCTIONS ============================================ //
-// ON CLICK FUNCTIONS ============================================ //
-// ON CLICK FUNCTIONS ============================================ //
+$("#addSearch").on("click", function(){
+    var newSearch = $("input").eq(0).val();
+    searchArray.push(newSearch);
+    buttonMaker(searchArray, "searchButton", "#search-buttons");
+    return false;
+})
