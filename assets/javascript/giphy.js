@@ -2,7 +2,7 @@
 // ==================================================================
 
 $(function(){
-    buttonMaker(searchArray, "searchButton", "#search-buttons");
+    buttonMaker(searchArray, "searchButton btn btn-outline-info", "#search-buttons");
     // console.log("Page Loaded");
 })
 
@@ -48,7 +48,7 @@ $(document).on("click", ".searchButton", function(){
             image.addClass("searchImage");
             searchDiv.append(p);
             searchDiv.append(image);
-            $("#searches").append(searchDiv);
+            $("#searches").prepend(searchDiv);
         }
     })
     // console.log(type);

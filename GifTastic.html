@@ -10,17 +10,21 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
 <body>
+    <div class="container">   
+        <div class="col-8">    
+            <div id="search-buttons"></div>
+            <div id="searches"></div>
+        </div>
         
-        
-    <div id="search-buttons"></div>
-    
-    <form id="search-form">
-        <label for="search-input">Add in your search!</label>
-        <input type="text" id="search-input"><br>
-        <input type="submit" value="submit">
-    </form>
-    
-    <div id="searches"></div>
+        <div class="col-4">
+            <form id="search-form">
+                <label for="search-input">Add in your search!</label>
+                <input type="text" id="search-input"><br>
+                <input type="submit" value="submit">
+            </form>
+        </div>
+    </div>
+
         
 <script src="https://code.jquery.com/jquery-3.4.0.js" integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo=" crossorigin="anonymous"></script>   
 <script src="assets/javascript/giphy.js"></script>    
