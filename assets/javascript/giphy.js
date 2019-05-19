@@ -42,6 +42,8 @@ $(document).on("click", ".searchButton", function(){
 
 
 
+
+
 // GiPHY APi KEY = UNUrXOwdD5LUj9OXrpezgJTnU1ytlcTJ
 
 // GiPHY EXAMPLE: http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=UNUrXOwdD5LUj9OXrpezgJTnU1ytlcTJ&limit=10
